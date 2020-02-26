@@ -10,12 +10,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 -->
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.xebialabs.com/deployit/synthetic"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
-
-  <!-- <type type="cassandra.ExecutedDeployment" deployable-type="cassandra.Deployment" extends="udm.BaseDeployedArtifact" container-type="cql.CassandraClient">
-  <generate-deployable type="cassandra.Deployment" extends="udm.BaseDeployableFolderArtifact" copy-default-values="true"/>
-      <property name="application_property" required="false" default="some_value" description="A property defined on the deployable."/>
-</type> -->
-
   <!-- cql Scripts -->
 <type type="cql.CqlScripts" extends="generic.Folder" description="ZIP file containing CQL scripts">
     <property name="username" required="false" description="The username to connect to the database" />
@@ -49,6 +43,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     <property name="casHome" description="The directory that contains the Cassandra installation" />
     <property name="sid" description="The Cassandra SID to connect to" />
 </type>
-
 
 </synthetic>

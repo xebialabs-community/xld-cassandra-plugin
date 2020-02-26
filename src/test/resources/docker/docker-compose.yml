@@ -11,16 +11,6 @@ cassandra:
   image: cassandra:latest
   ports:
     - "22:22"
-#
-# xlr_endevor:
-#   image: xebialabsunsupported/xlr_dev_run:9.0.6
-#   volumes:
-#     - ~/xl-licenses:/license
-#     - ./../../../../:/data
-#   links:
-#    - endevor
-#   ports:xebialabsunsupported/docker-xld:9.5.1
-#    - "15516:5516"xebialabsunsupported/xld_dev_run
 
 xld:
   image: xebialabsunsupported/xld_dev_run:9.5

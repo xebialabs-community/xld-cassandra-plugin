@@ -1,0 +1,34 @@
+plugins {
+  id "com.xebialabs.xldp" version "1.0.5"
+  id "com.xebialabs.xl.docker" version "1.1.0"
+  id "com.github.hierynomus.license" version "0.14.0"
+  id "nebula.release" version "11.0.0"
+}
+
+defaultTasks 'build'
+
+apply plugin: 'java'
+apply plugin: 'maven'
+
+xlDocker {
+  compileImage = 'xebialabsunsupported/xld_dev_compile'
+  compileVersion = '9.5'
+  runImage = 'xebialabsunsupported/xld_dev_run'
+  runVersion = '9.5'
+  runPortMapping = '4516:4516'
+}
+
+if (!project.hasProperty('release.scope')) {
+  project.ext['release.scope'] = 'patch'
+}
+
+if (!project.hasProperty('release.useLastTag')) {
+  project.ext['release.useLastTag'] = true
+}
+
+license {
+  header rootProject.file("License.md")
+  ext.year = Calendar.getInstance().get(Calendar.YEAR)
+  ext.name = 'XEBIALABS'
+  strictCheck false
+}

@@ -1,0 +1,14 @@
+---
+apiVersion: xl-deploy/v1
+kind: Applications
+spec:
+- name: Applications/test
+  type: udm.Application
+  lastVersion: "1.0"
+  children:
+  - name: "1.0"
+    type: udm.DeploymentPackage
+    deployables:
+    - name: test
+      type: cql.CqlScripts
+      file: !file "artifacts/Applications/test/1.0/test/cassandra.zip"

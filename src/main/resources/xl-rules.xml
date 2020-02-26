@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 2020 XEBIALABS
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+-->
+<rules xmlns="http://www.xebialabs.com/xl-deploy/xl-rules">
+	<disable-rule name="cql.ExecutedCqlScripts.executeCreate_CREATE" />
+	<disable-rule name="cql.ExecutedCqlScripts.executeDestroy_DESTROY" />
+	<disable-rule name="cql.ExecutedCqlScripts.executeModify_MODIFY" />
+
+	<rule name="rules_cql.ExecutedCqlScripts.CREATE" scope="deployed">
+		<conditions>
+			<type>cql.ExecutedCqlScripts</type>
+			<operation>CREATE</operation>
+		</conditions>
+		<planning-script-path>rules/cql_create.py</planning-script-path>
+	</rule>
+
+    <rule name="rules_cql.ExecutedCqlScripts.MODIFY" scope="deployed">
+        <conditions>
+            <type>cql.ExecutedCqlScripts</type>
+            <operation>MODIFY</operation>
+        </conditions>
+        <planning-script-path>rules/cql_modify.py</planning-script-path>
+    </rule>
+	<rule name="rules_cql.ExecutedCqlScripts.DESTROY" scope="deployed">
+		<conditions>
+            <type>cql.ExecutedCqlScripts</type>
+			<operation>DESTROY</operation>
+		</conditions>
+		<planning-script-path>rules/generate_destroy_plan.py</planning-script-path>
+	</rule>
+
+</rules>

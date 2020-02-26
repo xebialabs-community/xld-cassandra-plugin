@@ -5,7 +5,7 @@ deploy:
   api_key:
     secure: SHgPO1FPX/uyCPCGLlM4x72NoPrFmd8W0Bd4bQfujzPw7zrdrDvtXWtLPxc2gzEPvEN+iUkfX4Z5aXSHY3ip5XJKM1rlb4wegWovWFAISdqbQL6o0/5Ibn9oNw5R0rsxJWmZMcjgj2SfF1XwnQYvn+T7Y/QZYeQ7+g8iRzvgt/oTybky5gwHwHFMDOcAHqP0a6ILx5AJN3Xf6+wwdBi/FtuvWWGXGpsxlz452/9yAbv4+ZJRTXOEuVQdXVND7Wy7/QEet7EmRs5Bf8oOkpOiUymrNJN9UrfIWI/kiBV66KzZ+oB+efbP5hGagf/EeU6RX+2RZnVX+a44ZUTqzQ/c8UEPwGNwKRfifk6IzrzriYuukMKVcp2YoVI1DbTjYJ3k4PLNSKUwm3DeMiKifAuXCnR7l6OsKzFoVsGLXXCuOdQrJvV6ufWebP3aN2Wi1squCFGn0HiN6f7MHqKlfS6vGAaKhS36PZZyi8SrFDIfS+7QlWT6XAqRo1+eo5qjDsbei1cR//dvixr2JnhJWxZZHcwbKI1tnX9vbrGFQStHw8rnav2i5ExIOw7d5prvpwckqUMhd4Ss7bKyS/OWLvBjQtOXR4AoKftZno+u1WdXuhAxO8yu3KDsgLT8sdN1l5aoTAAGIgj25V8+c4BPQkXoN6ppNalkw6EjaJd3WpUMJs4=
   file_glob: true
-  file: build/libs/*
+  file: build/distributions/*
   skip_cleanup: true
   on:
     tags: true

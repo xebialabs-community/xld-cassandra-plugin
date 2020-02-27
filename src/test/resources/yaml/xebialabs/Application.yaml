@@ -13,11 +13,23 @@ kind: Applications
 spec:
 - name: Applications/test
   type: udm.Application
-  lastVersion: "1.0"
+  lastVersion: "3.0"
   children:
+  - name: "3.0"
+    type: udm.DeploymentPackage
+    deployables:
+    - name: new_test
+      type: cql.CqlScripts
+      file: !file "artifacts/Applications/test/3.0/new_test/cassandra2.zip"
   - name: "1.0"
     type: udm.DeploymentPackage
     deployables:
     - name: test
       type: cql.CqlScripts
-      file: !file "artifacts/Applications/test/1.0/test/cassandra.zip"
+      file: !file "artifacts/Applications/test/1.0/test/cassandra1.zip"
+  - name: "2.0"
+    type: udm.DeploymentPackage
+    deployables:
+    - name: test
+      type: cql.CqlScripts
+      file: !file "artifacts/Applications/test/2.0/test/cassandra2.zip"

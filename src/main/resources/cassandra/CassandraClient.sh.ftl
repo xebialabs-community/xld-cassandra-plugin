@@ -5,13 +5,20 @@
     THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 <#include "/generic/templates/linuxExportEnvVars.ftl">
-<#import "/cql/commonFunctions.ftl" as cmn>
+<#import "/cassandra/commonFunctions.ftl" as cmn>
 
-cd ${deployed.file.path}
-<#if cmn.lookup('password')??>
-${deployed.container.casHome} <#if cmn.lookup('username')??>-u ${cmn.lookup('username')}</#if> <#if cmn.lookup('password')??>-p ${sanitize(cmn.lookup('password'))}</#if> -f ${cqlScriptToExecute} <#if cmn.lookup('sid')??>${cmn.lookup('sid')}</#if>
+<#if params??>
+echo "${params.testCqlStatement}" > test.cql
+    <#assign file="test.cql">
 <#else>
-${deployed.container.casHome} -f ${cqlScriptToExecute} <#if cmn.lookup('sid')??>${cmn.lookup('sid')}</#if>
+  cd ${deployed.file.path}
+  <#assign file="${cqlScriptToExecute}">
+</#if>
+
+<#if cmn.lookup('password')??>
+${container.cqlshLocation} <#if cmn.lookup('username')??>-u ${cmn.lookup('username')}</#if> <#if cmn.lookup('password')??>-p ${sanitize(cmn.lookup('password'))}</#if> -f ${file} <#if cmn.lookup('sid')??>${cmn.lookup('sid')}</#if>
+<#else>
+${container.cqlshLocation} -f ${file} <#if cmn.lookup('sid')??>${cmn.lookup('sid')}</#if>
 res=$?
 if [ $res != 0 ] ; then
         exit $res

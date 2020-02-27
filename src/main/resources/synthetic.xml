@@ -34,14 +34,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 <!-- cql Containers -->
 
 <type type="cql.CassandraClient" extends="generic.Container" description="Cassandra CQL*Plus client">
-    <property name="clientWrapperScript" hidden="true" default="cql/CassandraClient" />
+    <property name="clientWrapperScript" hidden="true" default="cassandra/CassandraClient" />
 
     <property name="username" required="false" description="If set, the user name to use if none is set on the deployed cql.ExecutedcqlScripts" />
     <property name="password" required="false" password="true" description="If set, the password to use if none is set on the deployed cql.ExecutedcqlScripts" />
     <property name="additionalOptions" required="false" size="medium" description="Specify additional options to be passed to the command-line cql client" />
 
-    <property name="casHome" description="The directory that contains the Cassandra installation" />
+    <property name="cqlshLocation" description="The directory that contains the Cqlsh executable. Example '/usr/bin/cqlsh'" />
     <property name="sid" description="The Cassandra SID to connect to" />
+
+  <!-- methods -->
+  <method name="testConnection" label="Test connection" script="cassandra/CassandraClient" delegate="shellScript" description="Test connection to Cassandra database server">
+    <parameters>
+      <parameter name="testCqlStatement" kind="string" default="SELECT 1;" required="true" description="CQL statement to test the connection to the Cassandra server" />
+    </parameters>
+  </method>
+
 </type>
 
 </synthetic>
